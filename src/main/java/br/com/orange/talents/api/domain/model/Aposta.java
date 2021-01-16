@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,12 +28,21 @@ public class Aposta {
 	private Long id;
 	
 	@Column(nullable = false)
-	private Integer numero;
+	private String numero;
 	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime dataCadastro;
 	
 	@ManyToOne
+	@JoinColumn (nullable = false)
 	private Pessoa pessoa;
+	
+	public Aposta() {
+		
+	}
+	
+	public Aposta(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 }

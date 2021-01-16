@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +34,17 @@ public class Pessoa {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pessoa")
 	private List<Aposta> apostas = new ArrayList<>();
+	
+	
+	public Pessoa() {
+		
+	}
+	
+	public Pessoa(String email) {
+		this.email = email;
+	}
 	
 }
