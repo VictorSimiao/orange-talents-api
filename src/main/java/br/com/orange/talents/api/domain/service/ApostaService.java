@@ -28,11 +28,9 @@ public class ApostaService {
 	}
 
 	private String gerarRadom(String email) {
-
 		StringBuilder sb = new StringBuilder();
 		Random aleatorio = new Random();
 		String numeroSoteado;
-
 		for (int i = 0; i < 6; i++) {
 			sb.append((aleatorio.nextInt(60) + 1) + " ");
 		}
